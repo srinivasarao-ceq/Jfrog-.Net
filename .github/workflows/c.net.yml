@@ -19,3 +19,7 @@ jobs:
       - name: COnfigure Jfrog artifactory
         run: |
           nuget sources Add -Name Artifactory -Source https://srinivasceq.jfrog.io/artifactory/api/nuget/v3/net-local-demo/index.json -username maddila.srinivasa@cloudeq.com -password cmVmdGtuOjAxOjE3MzE1OTM1Njk6SXZLa2U0VldwOTY0SWY5ZWRTSUdlQ0Zyblgx
+
+      - name: setup config
+        run: jf rt dotnet restore --build-name="NugetTest" --build-number="1"
+
