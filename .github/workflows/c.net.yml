@@ -1,0 +1,21 @@
+name: .Net application with Jfrog scanning
+on:
+  workflow_dispatch:
+
+jobs:
+  Jfrog_Net_application:
+    runs-on: ubuntu-latest
+    steps:
+      - name: configure Jfrog CLI
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_USER: ${{ secrets.JF_USER }}
+          JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+      
+      - name: Setup NuGet.exe
+        uses: nuget/setup-nuget@v1
+     
+      - name: COnfigure Jfrog artifactory
+        run: |
+          nuget sources Add -Name Artifactory -Source https://srinivasceq.jfrog.io/artifactory/api/nuget/v3/net-local-demo/index.json -username maddila.srinivasa@cloudeq.com -password cmVmdGtuOjAxOjE3MzE1OTM1Njk6SXZLa2U0VldwOTY0SWY5ZWRTSUdlQ0Zyblgx
