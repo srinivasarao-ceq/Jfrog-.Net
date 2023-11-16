@@ -42,5 +42,8 @@ jobs:
           docker-compose build 
           docker images
 
+      - name: Scan the docker image with Jfrog- Xray
+        run: jf docker scan eshopwebmvc:latest 
+
 
       
