@@ -16,6 +16,9 @@ jobs:
       
       - name: Checkout the code
         uses: actions/checkout@v3
+      
+      - name: to specify the .sln file
+        uses: dotnet publish eShopOnWeb.sln -c Release -o out
 
       - name: Scan the .Net application
         run: jf audit --watches "demo"
