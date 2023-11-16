@@ -26,6 +26,7 @@ jobs:
       
       - name: To specify the .sln file
         run: dotnet publish eShopOnWeb.sln -c Release -o out
+        continue-on-error: true
 
       - name: Scan the .Net application
         run: jf audit --watches "demo"
