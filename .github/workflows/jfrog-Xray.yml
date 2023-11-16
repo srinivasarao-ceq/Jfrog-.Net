@@ -6,8 +6,6 @@ on:
 jobs:
   Jfrog-configuration:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.jfrog-scan.outputs.test }}
     steps:
       - name: configure Jfrog CLI
         uses: jfrog/setup-jfrog-cli@v3
