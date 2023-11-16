@@ -1,0 +1,24 @@
+name: .Net application scan with Jfrog Xray
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  Jfrog-configuration:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.jfrog-scan.outputs.test }}
+    steps:
+      - name: configure Jfrog CLI
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_USER: ${{ secrets.JF_USER }}
+          JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+      
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Scan the .Net application
+        run: jf audit --watch "demo"
+      
